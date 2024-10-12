@@ -7,7 +7,7 @@ const displayCategories = async() => {
     const categories = await getCategories();
     const result = categories.map((cat)=>{
         return `<div class="category">
-                    <h4><a href="categoryDetail.html?category=${cat}">${cat}</a></h4>
+                    <a href="categoryDetail.html?category=${cat}"><h4>${cat}</h4></a>
                     
                 </div>
         `
