@@ -7,7 +7,45 @@
     <title>Fake Store</title>
 </head>
 <body>
-    <header></header>
+    <div class="loader-container">
+        <div class="loader"></div>
+    </div>
+      <!-- Start header -->
+      <header class="header">
+        <div class="container">
+            <div class="row">
+                <div class="logo">
+                    <img src="./assets/imgs/Logo.svg" alt="Logo pic" />
+                    <a href="#">mangcoding Store</a>
+                </div>
+                <i class="fa-solid fa-bars menu"></i>
+                <nav class="navbar">
+                    <ul>
+                        <li>
+                            <a href="#" class="active">Home</a>
+                        </li>
+                        <li>
+                            <a href="#">Course</a>
+                        </li>
+                        <li>
+                            <a href="#">About Us</a>
+                        </li>
+                        <li>
+                            <a href="#">Article</a>
+                        </li>
+                        <li>
+                            <a href="#">Contact</a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="auth">
+                    <a href="#" class="login">Log in</a>
+                    <a href="#" class="register">Register</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- End header -->
     <main>
         <section class="categories">
             <div class="container">
@@ -26,7 +64,33 @@
         </section>
     </main>
     <footer></footer>
+        <div class="pagination-container">
+            <ul class="pagination">
+            </ul>
+        </div>
 
+
+
+        <section class="count">
+
+            <h1>المتبقي لرمضان</h1>
+            <div class="countdown">
+                
+                <div class="time">
+                    <span class="day"></span> days
+                </div>
+                <div class="time">
+                    <span class="hour"></span> hours
+                    </div>
+                    <div class="time">
+                        <span class="minute"></span> minutes
+                    </div>
+                    <div class="time">
+                        <span class="second"></span> seconds
+                    </div>
+                </div=>
+            </section>
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.7/axios.min.js" integrity="sha512-DdX/YwF5e41Ok+AI81HI8f5/5UsoxCVT9GKYZRIzpLxb8Twz4ZwPPX+jQMwMhNQ9b5+zDEefc+dcvQoPWGNZ3g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="./assets/js/main.js"></script>
 </body>
