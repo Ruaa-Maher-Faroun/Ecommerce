@@ -4,6 +4,7 @@ const getCategories = async() => {
 };
 
 const displayCategories = async() => {
+<<<<<<< HEAD
     const loader = document.querySelector('.loader-container');
     loader.classList.add('active');
     try{
@@ -24,6 +25,17 @@ const displayCategories = async() => {
         loader.classList.remove('active');
 
     }
+=======
+    const categories = await getCategories();
+    const result = categories.map((cat)=>{
+        return `<div class="category">
+                    <a href="categoryDetail.html?category=${cat}"><h4>${cat}</h4></a>
+                    
+                </div>
+        `
+    }).join(' ');
+    document.querySelector(".categories .row").innerHTML = result;
+>>>>>>> d35d596f4c14ff09739aeb73544169a31101c5d2
     
 };
 
