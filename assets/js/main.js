@@ -43,8 +43,6 @@ const getProducts = async(pageNum) => {
 };
 
 const displayProducts = async(pageNum=1) => {
-    console.log(pageNum);
-    
     const loader = document.querySelector('.loader-container');
     loader.classList.add('active');
     let data;
@@ -53,14 +51,14 @@ const displayProducts = async(pageNum=1) => {
     
     const result = data.products.map((prod) => {
         return `<div class="product">
-        <img src="${prod.thumbnail}" alt="${prod.description}" />
+        <img src="${prod.thumbnail}" class="images" alt="${prod.description}" />
             <h3>${prod.title}</h3>
             <p class="desc">${prod.description}</p>
             <p><span>${prod.category} ${prod.price}</span></p>
             </div>`
     }).join('  ');
     document.querySelector(".products .row").innerHTML = result;
-
+    modal();
 
 }catch(e){
     document.querySelector(".products .row").innerHTML = "<h1>Error Loading</h1>";
@@ -127,5 +125,74 @@ setInterval(() => {
     countDown();
     
 }, 1000);
+
+function modal(){
+    const modal = document.querySelector(".modal");
+    const rightBtn = document.querySelector(".right-btn");
+    const leftBtn = document.querySelector(".left-btn");
+    const closeBtn = document.querySelector(".close-btn");
+    const images = Array.from(document.querySelectorAll(".images"));
+    let curImgInd = 0;
+    images.forEach((img)=>{
+        img.addEventListener("click", (event) => {
+            modal.classList.remove("d-none");
+            modal.querySelector("img").setAttribute("src", event.target.src);
+            const currentImg = event.target;
+            curImgInd = images.indexOf(currentImg);
+        });
+    });
+    
+    //close button
+    closeBtn.addEventListener("click", () => {
+        modal.classList.add("d-none");
+    });
+    //right button
+    rightBtn.addEventListener("click",()=>{
+        curImgInd++;
+        if(curImgInd == images.length){
+            curImgInd = 0;
+            
+        }
+        const src = images[curImgInd].src;
+        modal.querySelector("img").setAttribute("src", src);
+
+    });
+    //left button
+    leftBtn.addEventListener("click", ()=>{
+        curImgInd--;
+        if(curImgInd < 0){
+            curImgInd = images.length - 1;
+        }
+        const src = images[curImgInd].src;
+        modal.querySelector("img").setAttribute("src", src);
+    });
+
+    document.addEventListener("keydown", (e)=>{
+
+
+        if(e.code=="Escape"){
+            modal.classList.add("d-none");
+        }else if(e.code=="ArrowRight"){
+            curImgInd++;
+            if(curImgInd == images.length){
+                curImgInd = 0;
+                
+            }
+            const src = images[curImgInd].src;
+            modal.querySelector("img").setAttribute("src", src);
+    
+        }else if(e.code=="ArrowLeft"){
+            curImgInd--;
+            if(curImgInd < 0){
+                curImgInd = images.length - 1;
+            }
+            const src = images[curImgInd].src;
+            modal.querySelector("img").setAttribute("src", src);
+        
+        }
+    });
+ 
+
+}
 displayCategories();
 displayProducts();
